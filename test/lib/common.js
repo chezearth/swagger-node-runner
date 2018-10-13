@@ -180,27 +180,27 @@ module.exports = function() {
         });
     });
 
-    // it('should reject when missing parameter', function(done) {
-    //   request(this.app)
-    //     .get('/hello_form')
-    //     .send('xxx=Scott')
-    //     .set('Accept', 'application/json')
-    //     .expect(400)
-    //     .expect('Content-Type', /json/)
-    //     .end(function(err, res) {
-    //       should.not.exist(err);
-    //       res.body.should.have.property('errors');
-    //       res.body.message.should.eql('Validation errors');
-    //       res.body.errors.should.be.an.Array;
-    //       res.body.errors[0].should.have.properties({
-    //         code: 'INVALID_REQUEST_PARAMETER',
-    //         in: 'formData',
-    //         message: 'Invalid parameter (name): Value is required but was not provided',
-    //         name: 'name'
-    //       });
-    //       done();
-    //     });
-    // });
+    it('should reject when missing parameter', function(done) {
+      request(this.app)
+        .get('/hello_form')
+        .send('xxx=Scott')
+        .set('Accept', 'application/json')
+        .expect(400)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          should.not.exist(err);
+          res.body.should.have.property('errors');
+          res.body.message.should.eql('Validation errors');
+          res.body.errors.should.be.an.Array;
+          res.body.errors[0].should.have.properties({
+            code: 'INVALID_REQUEST_PARAMETER',
+            in: 'formData',
+            message: 'Invalid parameter (name): Value is required but was not provided',
+            name: 'name'
+          });
+          done();
+        });
+    });
 
     it('should reject when invalid content', function(done) {
       request(this.app)

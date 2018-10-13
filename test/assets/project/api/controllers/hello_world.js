@@ -13,17 +13,6 @@ module.exports = {
 
 function hello(req, res) {
   var name = req.swagger.params.name.value || 'stranger';
-  // console.log('Req Params =', req.swagger.params.valid);
-  // console.log('\n\nReq =', req);
-  if(req.method === 'PUT' && req.url === '/expect_integer') {
-    console.log('\n\nReq swagger params name =', req.swagger.params.name.error)//.parameterObject);
-    console.log('\n\nReq query', req.query);
-    console.log('\n\nReq url', req.url);
-    console.log('\n\nReq body', req.body);
-    console.log('\n\nReq params', req.params);
-    console.log('\n\nReq method', req.method);
-    console.log('\n\nReq Headers =', req.headers);
-  }
   var hello = util.format('Hello, %s!', name);
   res.json(hello);
 }
