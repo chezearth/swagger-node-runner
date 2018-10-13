@@ -6,7 +6,7 @@ module.exports = {
 
 function pipeInterface(ctx, next) {
   ctx.statusCode = 200;
-  ctx.headers = { 
+  ctx.headers = {
     'content-type': 'application/json',
     'x-interface': 'pipe'
   };
@@ -20,7 +20,7 @@ function middlewareInterface(req, res, next) {
 
 function pipeInterfaceNoBody(ctx, next) {
   ctx.statusCode = 200;
-  ctx.headers = { 
+  ctx.headers = {
     'content-type': 'application/json',
     'x-interface': 'pipe'
   };
