@@ -31,7 +31,7 @@ var yaml = require('js-yaml');
 var path = require('path');
 var sway = require('sway');
 var debug = require('debug')('swagger');
-var bagpipes = require('bagpipes');
+var bagpipes = require('@chezearth/bagpipes');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 
@@ -245,7 +245,7 @@ function Runner(appJsConfig, cb) {
           console.error("\t#" + i + ".: " + err.validationErrors[i].message + " in swagger config at: >" + err.validationErrors[i].path.join('/') + "<");
         }
       }
-      
+
       process.nextTick(function() { throw err; });
     })
 }
