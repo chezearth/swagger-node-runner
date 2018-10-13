@@ -52,24 +52,24 @@ module.exports = function() {
       });
   });
 
-  // it('should return example based on _mockReturnStatus header', function(done) {
-  //   request(this.app)
-  //     .get('/hello_form')
-  //     .send('name=Scott')
-  //     .set('Accept', 'application/json')
-  //     .set('_mockReturnStatus', '201')
-  //     .expect(201)
-  //     .expect('Content-Type', /json/)
-  //     .end(function(err, res) {
-  //       should.not.exist(err);
-  //       res.body.should.not.eql({ message: 'An example message' });
-  //       res.body.should.not.eql({ message: 'mocking from the controller!'});
-  //       res.body.should.have.property('string');
-  //       res.body.string.should.be.a.String;
-  //       res.body.should.have.property('integer');
-  //       res.body.integer.should.be.a.Integer;
-  //       done();
-  //     });
-  // });
+  it('should return example based on _mockReturnStatus header', function(done) {
+    request(this.app)
+      .get('/hello_form')
+      .send('name=Scott')
+      .set('Accept', 'application/json')
+      .set('_mockReturnStatus', '201')
+      .expect(201)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        should.not.exist(err);
+        res.body.should.not.eql({ message: 'An example message' });
+        res.body.should.not.eql({ message: 'mocking from the controller!'});
+        res.body.should.have.property('string');
+        res.body.string.should.be.a.String;
+        res.body.should.have.property('integer');
+        res.body.integer.should.be.a.Integer;
+        done();
+      });
+  });
 
 };
