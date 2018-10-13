@@ -145,8 +145,8 @@ paths:
     get:
       description: Returns 'Hello' to the caller
       operationId: hello_file
-      # consumes:
-      #   - multipart/form-data
+      consumes:
+        - multipart/form-data
       parameters:
         - name: name
           in: formData
@@ -172,8 +172,8 @@ paths:
     get:
       description: Returns 'Hello' to the caller
       operationId: hello_text_body
-      # consumes:
-      #   - text/plain
+      consumes:
+        - text/plain
       parameters:
         - name: name
           in: body

@@ -49,19 +49,19 @@ module.exports = function() {
         });
     });
 
-    // it('should get formData parameter', function(done) {
-    //   request(this.app)
-    //     .get('/hello_form')
-    //     .send('name=Scott')
-    //     .set('Accept', 'application/json')
-    //     .expect(200)
-    //     .expect('Content-Type', /json/)
-    //     .end(function(err, res) {
-    //       should.not.exist(err);
-    //       res.body.should.eql('Hello, Scott!');
-    //       done();
-    //     });
-    // });
+    it('should get formData parameter', function(done) {
+      request(this.app)
+        .get('/hello_form')
+        .send('name=Scott')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          should.not.exist(err);
+          res.body.should.eql('Hello, Scott!');
+          done();
+        });
+    });
 
     it('should get body parameter', function(done) {
       request(this.app)
@@ -77,35 +77,35 @@ module.exports = function() {
         });
     });
 
-    // it('should get file parameter', function(done) {
-    //   request(this.app)
-    //     .get('/hello_file')
-    //     .field('name', 'Scott')
-    //     .attach('example_file', path.resolve(__dirname, '../assets/example_file.txt'))
-    //     .set('Accept', 'application/json')
-    //     .expect(200)
-    //     .expect('Content-Type', /json/)
-    //     .end(function(err, res) {
-    //       should.not.exist(err);
-    //       res.body.should.eql('Hello, Scott! Thanks for the 7 byte file!');
-    //       done();
-    //     });
-    // });
-    //
-    // it('should get text body', function(done) {
-    //   request(this.app)
-    //     .get('/hello_text_body')
-    //     .send('Scott')
-    //     .type('text')
-    //     .set('Accept', 'application/json')
-    //     .expect(200)
-    //     .expect('Content-Type', /json/)
-    //     .end(function(err, res) {
-    //       should.not.exist(err);
-    //       res.body.should.eql('Hello, Scott!');
-    //       done();
-    //     });
-    // });
+    it('should get file parameter', function(done) {
+      request(this.app)
+        .get('/hello_file')
+        .field('name', 'Scott')
+        .attach('example_file', path.resolve(__dirname, '../assets/example_file.txt'))
+        .set('Accept', 'application/json')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          should.not.exist(err);
+          res.body.should.eql('Hello, Scott! Thanks for the 7 byte file!');
+          done();
+        });
+    });
+
+    it('should get text body', function(done) {
+      request(this.app)
+        .get('/hello_text_body')
+        .send('Scott')
+        .type('text')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          should.not.exist(err);
+          res.body.should.eql('Hello, Scott!');
+          done();
+        });
+    });
 
     it('should get a 404 for unknown path and operation', function(done) {
       request(this.app)
