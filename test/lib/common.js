@@ -202,7 +202,8 @@ module.exports = function() {
         });
     });
 
-    it('should reject when invalid content', function(done) {
+    // it('should reject when invalid content', function(done) {
+    it('should not reject when no content, even if MIME type invalid', function(done) {
       request(this.app)
         .put('/expect_integer')
         .set('Content-Type', 'text/plain')
@@ -210,9 +211,6 @@ module.exports = function() {
         // .expect(400)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
-          console.log('err =', err);
-          console.log('response status =', res.status);
-          console.log('body =', res.body);
           should.not.exist(err);
           // res.body.message.should.eql('Validation errors');
           res.body.should.eql('Hello, stranger!')
@@ -224,6 +222,24 @@ module.exports = function() {
           done();
         });
     });
+
+    it('should reject when invalid content', function(done) {
+      request(this.app)
+        .put('/expect_integer?name=Scott')
+        .set('Content-Type', 'text/plain')
+        .expect(400)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          res.body.message.should.eql('Validation errors');
+          res.body.errors.should.be.an.Array;
+          res.body.errors[0].should.have.properties({
+            code: 'INVALID_REQUEST_PARAMETER',
+            message: 'Invalid parameter (name): Expected type integer but found type string'
+          });
+          done();
+        });
+    });
+
   });
 
   describe('security', function() {
