@@ -1,6 +1,6 @@
 {
   "name": "@chezearth/swagger-node-runner",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Swagger loader and middleware utilities",
   "keywords": [
     "swagger",
