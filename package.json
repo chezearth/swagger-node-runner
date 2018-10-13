@@ -1,6 +1,6 @@
 {
   "name": "@chezearth/swagger-node-runner",
-  "version": "0.7.4",
+  "version": "0.7.4-1",
   "description": "Swagger loader and middleware utilities",
   "keywords": [
     "swagger",
@@ -20,7 +20,7 @@
     "url": "https://github.com/theganyo/swagger-node-runner.git"
   },
   "dependencies": {
-    "@chezearth/bagpipes": "^0.1.3",
+    "@chezearth/bagpipes": "^0.1.3-1",
     "async": "^1.5.0",
     "body-parser": "^1.14.1",
     "config": "^1.16.0",
